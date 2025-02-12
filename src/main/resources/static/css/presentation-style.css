@@ -1,0 +1,76 @@
+body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+
+        .container {
+            width: 85%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Sombra */
+        }
+
+
+        h1 {
+            text-align: center;
+            color: #2c3e50; /* Azul oscuro elegante */
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espacio entre imagen y texto */
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa; /* Fondo suave */
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Efecto hover: se alza un poquito al pasar el mouse */
+        .team-member:hover {
+            transform: scale(1.03);
+        }
+
+        /* Imagen del miembro */
+        .team-member img {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            object-fit: cover; /* imagen mantenga proporciones */
+            border: 3px solid #3498db; /* Borde azul */
+        }
+
+        /* Información del miembro */
+        .team-member .info {
+            flex: 1;
+        }
+
+        /* Nombre del miembro */
+        .team-member .info h2 {
+            margin: 0 0 8px;
+            color: #34495e; /* Azul grisáceo */
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* Descripción */
+        .team-member .info p {
+            margin: 0;
+            color: #555; /* Texto más suave */
+            font-size: 16px;
+            line-height: 1.5;
+        }

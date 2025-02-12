@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Presentacion</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/presentation-style.css}" />
+</head>
+<body>
+    <div th:replace="fragments/menu.html"></div>
+    <div class="container">
+        <h1>Nombre del equipo</h1>
+        <div class="team-member">
+            <img src="" alt="Miembro 1">
+            <div class="info">
+                <h2>Juan Diego Bermúdez Jiménez</h2>
+                <p>Información adicional del miembro 1</p>
+                <p>Ocupacion del miembro 1</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="" alt="Miembro 2">
+            <div class="info">
+                <h2>Samuel Silva Mejia</h2>
+                <p>Información adicional del miembro 2</p>
+                <p>Ocupación del miembro 2</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="" alt="Miembro 3">
+            <div class="info">
+                <h2>Juan David Sanchez A.</h2>
+                <p>Información adicional del miembro 3</p>
+                <p>Ocupación del miembro 3</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="" alt="Miembro 4">
+            <div class="info">
+                <h2>Felipe Castro</h2>
+                <p>Información adicional del miembro 4</p>
+                <p>Ocupación del miembro 4</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

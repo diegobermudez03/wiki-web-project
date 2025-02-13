@@ -1,101 +1,10 @@
-h1{
-  font-weight: bold;
-  color: #1b1b1b; /* Negro ligeramente más suave */
-  font-size: 50pt;
-  font-style: italic;
-}
-  
-/* Título centrado */
-.titulo {
-  text-align: center;
-}
-  
-/* Barra de menú */
-.menu-container {
-  position: fixed;
-  top: -10px; /* Ajusta este valor para subirlo más */
- left: 0;
-  width: 100%;
-  background-color: #4169e1; /* Azul real */
-  padding: 5px 10px; /* Reduce el padding para acercarlo más arriba */
-  text-align: left;
-}
-
-/* Contenedor del menú */
-.menu-container ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-/* Elementos de la lista */
-.menu-container li {
-  display: inline;
-  margin-right: 20px;
-  font-weight: bold;
-  color: #f8f9fa;
-}
-
-
-/* Estilos de los enlaces */
-.menu-container a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  background-color: #ff8c00; /* Naranja oscuro */
-  border-radius: 5px;
-  padding: 5px 10px;
-  transition: background 0.3s ease-in-out;
-}
-
-/* Efecto hover */
-.menu-container a:hover {
-  background-color: #ffa500; /* Naranja */
-}
-
-/* Botón deshabilitado */
-.menu-container a.disabled {
-  background-color: #b8860b; /* Marrón dorado */
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
-/* Descripción con alineación justificada */
-.descripcion {
-  text-align: justify;
-  color: #2c3e50; /* Azul oscuro elegante */
-}
-
-
 body {
-  background-color: #dcdcdc; /* Gris claro */
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #e0e0e0;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Centra el contenido verticalmente */
-}
-
-/* Estilo para el contenedor del contenido */
-.content-container {
-   background-color: #b0c4de !important; /* Azul suave (Light Steel Blue) */
-   max-width: 900px;
-   width: 90%;
-   padding: 25px;
-   border-radius: 10px;
-   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
- /* Ajustes para mejorar la tipografía */
-h1, h2, h3 {
-  color: #222; /* Texto más oscuro para contraste */
-}
-
-p {
-  color: #333; /* Gris oscuro para mejor legibilidad */
-  line-height: 1.6;
+  min-height: 100vh;
 }

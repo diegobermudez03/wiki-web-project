@@ -1,0 +1,2 @@
+docker build -t wikiproject:latest .
+docker run -p 9092:9092 wikiproject:latest

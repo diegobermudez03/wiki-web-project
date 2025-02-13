@@ -2,22 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
+    <title>Wiki Navigation</title>
+    <link rel="stylesheet" th:href="@{/css/menu-style.css}" />
 </head>
 <body>
-<nav>
-    <div class="menu-container">
-        <ul>
-            <li><a th:href="@{/wiki/description}">Descripción del proyecto</a></li>
-            <li><a th:href="@{/wiki/presentation}">Presentación de integrantes</a></li>
+    <nav class="navbar">
+        <div class="logo">
+            <a th:href="@{/wiki/description}">Proyecto Wiki</a>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/wiki/description}">Descripción</a></li>
+            <li><a th:href="@{/wiki/presentation}">Presentación</a></li>
             <li><a th:href="@{/wiki/requirements}">Requerimientos</a></li>
-            <li><a th:href="@{/wiki/architecture}">Arquitectura del proyecto</a></li>
-            <li><a th:href="@{/wiki/development}">Para el desarrollo</a></li>
+            <li><a th:href="@{/wiki/architecture}">Arquitectura</a></li>
+            <li><a th:href="@{/wiki/development}">Desarrollo</a></li>
             <li><a th:href="@{/wiki/testing}">Pruebas</a></li>
             <li><a th:href="@{/wiki/deployment}">Despliegue</a></li>
             <li><a th:href="@{/wiki/contact-us}">Formulario</a></li>
         </ul>
-    </div>
-</nav>
+    </nav>
 </body>
 </html>

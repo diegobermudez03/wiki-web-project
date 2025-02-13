@@ -1,14 +1,10 @@
 package com.web_dev.wiki_project.services;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.web_dev.wiki_project.entities.ContactUsEntity;
 import com.web_dev.wiki_project.repos.ContactUsRepository;
-
 import jakarta.el.ELException;
 
 @Component

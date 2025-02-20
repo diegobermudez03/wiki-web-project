@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/testing.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script th:src="@{/js/testing.js}" defer></script>
+
+    <title>Pruebas del Proyecto</title>
+    
+
+</head>
+<body>
+
+
+    <div th:replace="~{fragments/menu.html}"></div>
+
+    
+    <div class="testing-container">
+
+ 
+        <h1>Pruebas</h1>
+        <p class="subtitle">A continuación, se presentan los casos de prueba, tanto para el backend como para el frontend.</p>
+
+
+        <div class="testing-index">
+            <h2>Índice</h2>
+            <ol>
+                <li><a href="#Frontend">Frontend</a></li>
+                <li><a href="#Backend">Backend</a></li>
+            </ol>
+        </div>
+
+        <section class="fade-element" id="Frontend">
+            <h2>Frontend</h2>
+            <ul>
+                <li>Caso de prueba 1</li>
+                <div class="placeholder">[Placeholder para Casos de prueba]</div>
+
+                <li>Caso de prueba 2</li>
+                <div class="placeholder">[Placeholder para Casos de prueba]</div>
+            </ul>
+        </section>
+
+        <section class="fade-element" id="Backend">
+            <h2>Backend</h2>
+            <ul>
+                <li>Caso de prueba 1</li>
+                <div class="placeholder">[Placeholder para Casos de prueba]</div>
+
+                <li>Caso de prueba 2</li>
+                <div class="placeholder">[Placeholder para Casos de prueba]</div>
+
+                <li>Caso de prueba 3</li>
+                <div class="placeholder">[Placeholder para Casos de prueba]</div>
+            </ul>
+        </section>
+    </div>
+
+    
+</body>
+</html>

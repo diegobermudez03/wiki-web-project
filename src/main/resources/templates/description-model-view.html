@@ -1,20 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wiki Page</title>
-        <link rel="stylesheet" th:href="@{/css/style.css}" />
-        <link rel="stylesheet" th:href="@{/css/description-style.css}" />
-    </head>
-    <body>
-        <div th:replace="~{fragments/menu.html}"></div>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descripción del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/description-style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/menu.html}"></div>
 
-        <div class="content-container">
-            <h1 class="title">Wiki Proyecto</h1>
+    <div class="content-container">
+        <h1 class="title">Wiki Proyecto</h1>
+        <div class="submenu">
             <h2>Índice</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur repellat, recusandae consequatur aspernatur hic debitis ipsam alias exercitationem maiores ipsa tenetur temporibus accusantium officia ad, fugiat voluptatem quasi autem. Ea!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ducimus quas architecto odio accusamus ratione molestias repellendus aliquid quae ad, beatae animi minus reprehenderit perspiciatis quidem ipsam sed alias iure!</p>
+            <ol>
+                <li><a href="#vision-general">Visión General</a></li>
+                <li><a href="#objetivos">Objetivos del Proyecto</a></li>
+                <li><a href="#alcance-funcionalidades">Alcance y Funcionalidades Clave</a></li>
+                <li><a href="#beneficios">Beneficios Esperados</a></li>
+                <li><a href="#tecnologias">Tecnologías Principales</a></li>
+            </ol>
         </div>
-    </body>
+
+        <div class="section" id="vision-general">
+            <h3>Visión General</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Consequuntur repellat recusandae consequatur aspernatur hic debitis 
+                ipsam alias exercitationem maiores ipsa tenetur temporibus accusantium 
+                officia ad, fugiat voluptatem quasi autem. Ea!
+            </p>
+        </div>
+        
+        <div class="section" id="objetivos">
+            <h3>Objetivos del Proyecto</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis cumque, 
+                rerum nulla animi necessitatibus culpa cumque magni quaerat enim dicta 
+                possimus, quidem tempore necessitatibus incidunt, eligendi ab. Numquam, 
+                distinctio nisi.
+            </p>
+            <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Maecenas posuere leo id nunc lobortis dignissim.</li>
+                <li>Aenean faucibus eros a interdum hendrerit.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="alcance-funcionalidades">
+            <h3>Alcance y Funcionalidades Clave</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ducimus 
+                quas architecto odio accusamus ratione molestias repellendus aliquid 
+                quae ad, beatae animi minus reprehenderit perspiciatis quidem ipsam 
+                sed alias iure!
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper 
+                vel ex vitae imperdiet. Proin euismod ipsum vel sapien consequat, non 
+                aliquam turpis placerat.
+            </p>
+        </div>
+
+        <div class="section" id="beneficios">
+            <h3>Beneficios Esperados</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, 
+                iusto magnam nesciunt sed commodi reiciendis, dolores culpa nobis non 
+                ullam autem perspiciatis reprehenderit, quos ex? Accusamus, fugiat?
+            </p>
+            <ol>
+                <li>Mejor comunicación entre los miembros del equipo.</li>
+                <li>Documentación centralizada y fácil de mantener.</li>
+                <li>Menor riesgo de pérdida de información.</li>
+            </ol>
+        </div>
+
+        <div class="section" id="tecnologias">
+            <h3>Tecnologías Principales</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum 
+                voluptatem nam culpa amet, exercitationem atque blanditiis quisquam 
+                numquam quis nemo est est dolorem vero rerum, tempora, tenetur 
+                architecto facilis.
+            </p>
+        </div>
+
+    </div>
+</body>
 </html>

@@ -10,6 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/wiki")
 public class WikiTemplates {
 
+    @GetMapping("/")
+    public ModelAndView defaultModelAndView() {
+        return new ModelAndView("description-model-view");
+    }
+
     @GetMapping("/description")
     public ModelAndView descriptionModelView() {
         return new ModelAndView("description-model-view");

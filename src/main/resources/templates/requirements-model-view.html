@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requerimientos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/requirements-style.css}" />
+    <script th:src="@{/js/requirements.js}" defer></script>
+</head>
+<body>
+    <div th:replace="~{fragments/menu.html}"></div>
+
+    <div class="requirements-container">
+        <h1>Requerimientos del Proyecto</h1>
+        <p class="subtitle">A continuación, se presentan los principales requerimientos funcionales y no funcionales, así como las historias de usuario divididas por perfiles.</p>
+
+        <div class="requirements-index">
+            <h2>Índice</h2>
+            <ol>
+                <li><a href="#historias-usuario">Historias de usuario</a></li>
+                <li><a href="#no-funcionales">Requerimientos No Funcionales</a></li>
+            </ol>
+        </div>
+
+        <section class="fade-element" id="no-funcionales">
+            <h2>Requerimientos No Funcionales</h2>
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur adipiscing elit cubilia scelerisque, molestie tempor praesent curae mi aptent consequat duis himenaeos</li>
+                <li>hendrerit cum metus dapibus penatibus. Dapibus tempor cum magnis at montes dignissim fusce, porttitor consequat turpis pretium</li>
+                <li>dictum venenatis cursus sodales egestas. Iaculis non auctor elementum mus dui dis, sociis ante phasellus mattis quisque, semper ornare venenatis lacus duis.</li>
+            </ul>
+        </section>
+
+        <section class="fade-element" id="historias-usuario">
+            <h2>Historias de Usuario</h2>
+
+            <div class="user-stories-group">
+                <h3>Historias de Usuario - Arrendador (12)</h3>
+                <div class="stories-grid">
+                    <div class="story-card" 
+                         data-id="HUA 1" 
+                         data-title="Creación de cuenta"
+                         data-phrase="Como un usuario arrendador Quiero poder crear una cuenta de un usuario en el sistema que pueda manejar propiedades Para que pueda acceder a las herramientas y recursos necesarios para realizar las actividades del sistema."
+                         data-criteria="1. Debe capturar dirección y foto. 2. Validar disponibilidad. 3. Mostrar estado de la publicación."
+                         data-type="Arrendador">
+                        <h4>ID: AR-001</h4>
+                        <p><strong>Nombre:</strong> Reservar Propiedad</p>
+                        <p><em>"Como arrendador, quiero poder registrar mi propiedad para recibir solicitudes de reserva"</em></p>
+                        <button class="details-btn">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-stories-group">
+                <h3>Historias de Usuario - Administrador (9)</h3>
+                <div class="stories-grid">
+                    <div class="story-card" 
+                         data-id="AD-001" 
+                         data-title="Gestionar Usuarios"
+                         data-phrase="Como administrador, quiero ver el listado de usuarios para controlar su acceso"
+                         data-criteria="1. Permite filtrar por nombre. 2. Permite suspender cuentas. 3. Enviar notificaciones."
+                         data-type="Administrador">
+                        <h4>ID: AD-001</h4>
+                        <p><strong>Nombre:</strong> Gestionar Usuarios</p>
+                        <p><em>"Como administrador, quiero ver el listado de usuarios para controlar su acceso"</em></p>
+                        <button class="details-btn">Ver detalles</button>
+                    </div>
+                    <div class="story-card" 
+                         data-id="AD-002" 
+                         data-title="Lorem ipsum" 
+                         data-phrase="Como administrador, quiero lorem ipsum para lorem ipsum"
+                         data-criteria="Criterios de aceptación Lorem ipsum dolor sit amet"
+                         data-type="Administrador">
+                        <h4>ID: AD-002</h4>
+                        <p><strong>Nombre:</strong> Lorem ipsum</p>
+                        <p><em>"Como administrador, quiero lorem ipsum para lorem ipsum"</em></p>
+                        <button class="details-btn">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 id="modal-story-id"></h2>
+            <h3 id="modal-story-title"></h3>
+            <p id="modal-story-phrase"></p>
+            <div class="criteria">
+                <h4>Criterios de Aceptación</h4>
+                <p id="modal-story-criteria"></p>
+            </div>
+            <p class="story-type" id="modal-story-type"></p>
+        </div>
+    </div>
+</body>
+</html>

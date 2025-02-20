@@ -1,38 +1,88 @@
-
 .content-container {
     max-width: 900px;
-    background: white;
-    margin: 20px auto;
+    background: #fff;
+    margin: 40px auto;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-
 h1.title {
     font-size: 28px;
     font-weight: bold;
-    color: #0077b6; 
+    color: #0077b6;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-h2 {
-    font-size: 22px;
+
+.submenu {
+    margin-bottom: 25px;
+}
+
+.submenu ol {
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.submenu li {
+    margin: 8px 0;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: #0077b6;
+    font-weight: 500;
+}
+.submenu a:hover {
+    text-decoration: underline;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h3 {
+    font-size: 20px;
     color: #333;
     margin-bottom: 10px;
+    border-left: 4px solid #00b4d8;
+    padding-left: 10px; 
 }
 
-p {
+.section p,
+.section ul,
+.section ol {
     line-height: 1.8;
     font-size: 16px;
     color: #444;
     margin-bottom: 15px;
 }
 
+.section ul {
+    list-style: disc inside;
+    margin-left: 20px;
+}
+
+.section ol {
+    list-style: decimal inside;
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 768px) {
     .content-container {
         width: 90%;
         padding: 20px;
+        margin-top: 20px;
+    }
+
+    .section h3 {
+        font-size: 18px;
+    }
+
+    .section p,
+    .section ul,
+    .section ol {
+        font-size: 15px;
     }
 }

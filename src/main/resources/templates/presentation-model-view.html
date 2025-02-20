@@ -1,48 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Presentacion</title>
+    <title>Presentación | Tech Titans</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" th:href="@{/css/presentation-style.css}" />
+    <script th:src="@{/js/presentation.js}" defer></script>
 </head>
 <body>
     <div th:replace="~{fragments/menu.html}"></div>
+
     <div class="container">
-        <h1>Tech Titans</h1>
-        <div class="team-member">
+        <h1 class="team-title">Tech Titans</h1>
+
+        <div class="member-t"
+             mem-name="Juan Diego Bermúdez Jiménez"
+             mem-info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+             mem-role="Líder Técnico"
+             mem-img="@{/images/bermudez.jpg}">
             <img th:src="@{/images/bermudez.jpg}" alt="Miembro 1">
             <div class="info">
                 <h2>Juan Diego Bermúdez Jiménez</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-                <p>Rol del miembro</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+                <p><strong>Rol:</strong> Líder Técnico</p>
             </div>
         </div>
-        <div class="team-member">
+
+        <div class="member-t"
+            mem-name="Samuel Silva Mejia"
+            mem-info="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque."
+            mem-role="Líder de Planeación"
+            mem-img="@{/images/samuel.jpeg}">
             <img th:src="@{/images/samuel.jpeg}" alt="Miembro 2">
             <div class="info">
                 <h2>Samuel Silva Mejia</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
-                <p>Rol del miembro</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+                <p><strong>Rol:</strong> Líder de Planeación</p>
             </div>
         </div>
-        <div class="team-member">
-            <img src="" alt="Miembro 3">
+
+        <div class="member-t"
+            mem-name="Juan David Sanchez A."
+            mem-info="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis."
+            mem-role="Desarrollador Backend"
+            mem-img="@{/images/juan.jpeg}">
+            <img th:src="@{/images/juan.jpeg}" alt="Miembro 3">
             <div class="info">
                 <h2>Juan David Sanchez A.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
-                <p>Rol del miembro</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+                <p><strong>Rol:</strong> Desarrollador Backend</p>
             </div>
         </div>
-        <div class="team-member">
+
+        <div class="member-t"
+            mem-name="Felipe Castro"
+            mem-info="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+            mem-role="Líder de Pruebas"
+            mem-img="@{/images/pipe.jpeg}">
             <img th:src="@{/images/pipe.jpeg}" alt="Miembro 4">
             <div class="info">
                 <h2>Felipe Castro</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
-                <p>Rol del miembro</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+                <p><strong>Rol:</strong> Líder de Pruebas</p>
             </div>
         </div>
-    </div>
-</body>
 
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modal-img" alt="Foto integrante">
+            <h2 id="modal-name"></h2>
+            <p id="modal-info"></p>
+            <p><strong>Rol:</strong> <span id="modal-role"></span></p>
+        </div>
+    </div>
+
+</body>
 </html>

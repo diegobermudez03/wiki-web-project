@@ -1,5 +1,7 @@
 package com.web_dev.wiki_project.entities;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -29,5 +32,5 @@ public class ContactUsEntity {
     private String description;
 	private String email;
     private int semester;
-	
+
 }

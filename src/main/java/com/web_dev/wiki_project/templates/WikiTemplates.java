@@ -1,17 +1,26 @@
 package com.web_dev.wiki_project.templates;
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web_dev.wiki_project.entities.UserStoryEntity;
+import com.web_dev.wiki_project.services.UserStoriesService;
+
 @Controller
 @RequestMapping("/wiki")
 public class WikiTemplates {
 
+    @Autowired
+    private UserStoriesService storiesService;
+
     @GetMapping("/")
-    public ModelAndView defaultModelAndView() {
+    public ModelAndView defaultMode() {
         return new ModelAndView("description-model-view");
     }
 
@@ -27,8 +36,15 @@ public class WikiTemplates {
 
     @GetMapping("/requirements")
     public ModelAndView requirementsModelView() {
-        return new ModelAndView("requirements-model-view");
+        ModelAndView model = new ModelAndView("requirements-model-view");
+
+        List<UserStoryEntity> arrendadorStories = storiesService.getArrendStories();
+        List<UserStoryEntity> adminStories = storiesService.getAdminStories();
+        model.addObject("arrendadorStories", arrendadorStories);
+        model.addObject("adminStories", adminStories);
+        return model;
     }
+
 
     @GetMapping("/architecture")
     public ModelAndView architectureModelView() {

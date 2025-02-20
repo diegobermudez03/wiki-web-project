@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web_dev.wiki_project.entities.UserStoryEntity;
+import com.web_dev.wiki_project.services.EndpointsService;
 import com.web_dev.wiki_project.services.UserStoriesService;
 
 @Controller
@@ -18,6 +19,8 @@ public class WikiTemplates {
 
     @Autowired
     private UserStoriesService storiesService;
+    @Autowired
+    private EndpointsService endpointsService;
 
     @GetMapping("/")
     public ModelAndView defaultMode() {
@@ -38,8 +41,8 @@ public class WikiTemplates {
     public ModelAndView requirementsModelView() {
         ModelAndView model = new ModelAndView("requirements-model-view");
 
-        List<UserStoryEntity> arrendadorStories = storiesService.getArrendStories();
-        List<UserStoryEntity> adminStories = storiesService.getAdminStories();
+        final var arrendadorStories = storiesService.getArrendStories();
+        final var adminStories = storiesService.getAdminStories();
         model.addObject("arrendadorStories", arrendadorStories);
         model.addObject("adminStories", adminStories);
         return model;
@@ -53,7 +56,10 @@ public class WikiTemplates {
 
     @GetMapping("/development")
     public ModelAndView developmentModelView() {
-        return new ModelAndView("development-model-view");
+        ModelAndView model =  new ModelAndView("development-model-view");
+        final var endpoints = endpointsService.getEndpoints();
+        model.addObject("endpoints", endpoints);
+        return model;
     }
 
     @GetMapping("/testing")

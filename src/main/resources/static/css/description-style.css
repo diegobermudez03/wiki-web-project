@@ -75,14 +75,4 @@ h1.title {
         padding: 20px;
         margin-top: 20px;
     }
-
-    .section h3 {
-        font-size: 18px;
-    }
-
-    .section p,
-    .section ul,
-    .section ol {
-        font-size: 15px;
-    }
 }

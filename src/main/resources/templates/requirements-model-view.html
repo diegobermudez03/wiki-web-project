@@ -7,33 +7,36 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" th:href="@{/css/requirements-style.css}" />
     <script th:src="@{/js/requirements.js}" defer></script>
+    <script th:src="@{/js/fade.js}" defer></script>
 </head>
 <body>
     <div th:replace="~{fragments/menu.html}"></div>
     <div class="requirements-container">
         <h1>Requerimientos del Proyecto</h1>
         <p class="subtitle">
-            A continuación, se presentan los principales requerimientos funcionales y no funcionales, 
-            así como las historias de usuario divididas por perfiles.
+            Antes de desarrollar una plataforma es fundamental tener un entendimiento profundo sobre sus requerimientos, pues son estos los que guian sobre el que y el como se debe desarrollar, a continuacion se muestran los requerimientos tanto funcionales como no funcionales.
         </p>
         <div class="requirements-index">
-            <h2>Índice</h2>
+            <h2>Secciones</h2>
             <ol>
-                <li><a href="#historias-usuario">Historias de Usuario</a></li>
-                <li><a href="#no-funcionales">Requerimientos No Funcionales</a></li>
+                <li><a href="#no-funcionales">Requerimientos no funcionales</a></li>
+                <li><a href="#historias-usuario">Requerimientos funcionales</a></li>
             </ol>
         </div>
         <section class="fade-element" id="no-funcionales">
             <h2>Requerimientos No Funcionales</h2>
             <ul>
-                <li>El sistema debe soportar hasta 10,000 usuarios concurrentes.</li>
-                <li>El tiempo de respuesta no debe exceder 2 segundos en el 95% de las peticiones.</li>
-                <li>La aplicación debe cumplir con estándares de seguridad OWASP.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipiscing elit himenaeos class, laoreet dui varius lacus quam </li>
+                <li>iaculis litora ligula senectus, justo habitasse at pulvinar augue parturient magnis nullam. </li>
+                <li>Lobortis donec commodo magnis at porta sem massa ullamcorper, lacinia vulputate tempus</li>
+                <li>Lobortis donec commodo magnis at porta sem massa ullamcorper, lacinia vulputate tempus</li>
+                <li>habitasse aenean risus quam, litora faucibus primis phasellus magna venenatis interdum</li>
+                <li>Lobortis donec commodo magnis at porta sem massa ullamcorper, lacinia vulputate tempus</li>
             </ul>
         </section>
 
         <section class="fade-element" id="historias-usuario">
-            <h2>Historias de Usuario</h2>
+            <h2>Requerimeintos funcionales: Historias de Usuario</h2>
 
             <div class="user-stories-group">
                 <h3>
@@ -95,7 +98,7 @@
             <h3 id="modal-story-title"></h3>
             <p id="modal-story-phrase"></p>
             <div class="criteria">
-                <h4>Criterios de Aceptación</h4>
+                <h4>Criterios aceptacion</h4>
                 <p id="modal-story-criteria"></p>
             </div>
             <p class="story-type" id="modal-story-type"></p>

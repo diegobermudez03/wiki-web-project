@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/arquitechstyle.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <script th:src="@{/js/arquitech.js}" defer></script>
-
+    <script th:src="@{/js/fade.js}" defer></script>
     <title>Arquitectura del Proyecto</title>
-    
-
 </head>
 <body>
 
@@ -17,14 +14,12 @@
 
 
     <div class="arquitech-container">
-
- 
         <h1>Arquitectura del Proyecto</h1>
         <p class="subtitle">A continuación, se presentan los diagramas de referencia del proyecto, como el diagrama de contexto, diagrama del contenedor, diagrama de componentes, diagrama de entidad- relación y así mismo el diagrama de despliegue.</p>
 
 
         <div class="arquitech-index">
-            <h2>Índice</h2>
+            <h2>Secciones</h2>
             <ol>
                 <li><a href="#Diagramas-de-referencia">Diagramas de referencia</a></li>
                 <li><a href="#Modelos">Modelos</a></li>
@@ -36,13 +31,20 @@
             <h2>Diagramas de referencia C4</h2>
             <ul>
                 <li>Diagrama de contexto</li>
-                <div class="placeholder">[Placeholder para el Diagrama de Contexto]</div>
+                <img th:src="@{/images/contextdiagram.png}" 
+                 alt="Diaramde de contexto"
+                 class="architecture-image">
             
                 <li>Diagrama del contenedor</li>
-                <div class="placeholder">[Placeholder para el Diagrama del Contenedor]</div>
+                <img th:src="@{/images/containerdiagram.png}" 
+                 alt="diagrama de contenedor"
+                 class="architecture-image">
             
                 <li>Diagrama de componentes</li>
-                <div class="placeholder">[Placeholder para el Diagrama de Componentes]</div>
+                <img th:src="@{/images/components.png}" 
+                 alt="diagrama de componentes"
+                 class="architecture-image">
+            
             </ul>
         </section>
 
@@ -50,13 +52,18 @@
             <h2>Modelos</h2>
             <ul>
                 <li>Entidad/Relación: Diccionario</li>
-                <div class="placeholder">[Placeholder para el Modelo Entidad-Relación]</div>
+                <img th:src="@{/images/entitydiagram.png}" 
+                 alt="entidad relacion"
+                 class="architecture-image">
             </ul>
         </section>
     
         <section class="fade-element" id="Diagrama-despliegue">
             <h2>Diagrama de despliegue</h2>
-            <div class="placeholder">[Placeholder para el Diagrama de Despliegue]</div>
+            <img th:src="@{/images/deploymentdiagram.png}" 
+                 alt="diagrama de despliegue"
+                 class="architecture-image">
+            
         </section>
     </div>
 </body>

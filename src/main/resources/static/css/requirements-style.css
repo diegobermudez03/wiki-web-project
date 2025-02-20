@@ -1,6 +1,3 @@
-/**************************************************/
-/* Contenedor principal                           */
-/**************************************************/
 .requirements-container {
     max-width: 900px;
     width: 90%;
@@ -26,9 +23,6 @@
     font-style: italic;
 }
 
-/**************************************************/
-/* Índice                                         */
-/**************************************************/
 .requirements-index {
     margin-bottom: 30px;
 }
@@ -43,19 +37,6 @@
     margin-left: 20px;
 }
 
-/**************************************************/
-/* Secciones (Requerimientos)                     */
-/**************************************************/
-.fade-element {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-element.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 section h2 {
     font-size: 24px;
@@ -72,9 +53,7 @@ section ul {
     line-height: 1.6;
 }
 
-/**************************************************/
-/* Historias de Usuario                           */
-/**************************************************/
+
 .user-stories-group h3 {
     font-size: 20px;
     color: #0077b6;
@@ -89,12 +68,11 @@ section ul {
     gap: 20px;
 }
 
-/* Tarjetas de historia de usuario */
 .story-card {
-    background: #f8f9fa;
+    background: #e5f0fb;
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.48);
     transition: transform 0.2s;
     position: relative;
 }
@@ -128,11 +106,9 @@ section ul {
     background-color: #0077b6;
 }
 
-/**************************************************/
-/* Modal - Historias de Usuario                   */
-/**************************************************/
+
 .modal {
-    display: none;  /* Oculto por defecto */
+    display: none; 
     position: fixed;
     z-index: 2000; 
     left: 0; 
@@ -141,7 +117,7 @@ section ul {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
-    overflow: auto; /* Si el contenido es muy largo */
+    overflow: auto;
 }
 
 .modal-content {
@@ -176,9 +152,7 @@ section ul {
     text-align: right;
 }
 
-/**************************************************/
-/* Animaciones                                    */
-/**************************************************/
+
 @keyframes fadeInModal {
     from {
         opacity: 0;
@@ -190,9 +164,7 @@ section ul {
     }
 }
 
-/**************************************************/
-/* Responsividad                                  */
-/**************************************************/
+
 @media screen and (max-width: 768px) {
     .requirements-index ol {
         margin-left: 15px;
@@ -200,10 +172,5 @@ section ul {
 
     .stories-grid {
         grid-template-columns: 1fr;
-    }
-
-    .modal-content {
-        width: 90%;
-        margin: 60px auto;
     }
 }

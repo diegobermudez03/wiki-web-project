@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/development-style.css}" />
+    <script th:src="@{/js/fade.js}" defer></script>
+</head>
+<body>
+    <div th:replace="~{fragments/menu.html}"></div>
+    <div class="development-container">
+        <h1>Desarrollo</h1>
+        <p class="subtitle">
+            En esta seccion se profundiza en temas de desarrollo, desde el punto de vista de la documentacion, la informacion mas importante es la documentacion de los distintos endpoints provistos por la Rest API desarrollada.
+        </p>
+
+        <div class="development-index">
+            <h2>Secciones</h2>
+            <ol>
+                <li><a href="#overview">Resumen General</a></li>
+                <li><a href="#endpoints">Documentacion endpoints</a></li>
+            </ol>
+        </div>
+
+        <section id="overview" class="fade-element">
+            <h2>Resumen General</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipiscing elit himenaeos class, laoreet dui varius lacus quam iaculis litora ligula senectus, justo habitasse at pulvinar augue parturient magnis nullam. Lobortis donec commodo magnis at porta sem massa ullamcorper, lacinia vulputate tempus habitasse aenean risus quam, litora faucibus primis phasellus magna venenatis interdum. Luctus risus auctor quis dapibus tempor tellus commodo orci leo, erat ultrices pellentesque convallis praesent mattis elementum quisque imperdiet vivamus, interdum posuere non pretium ut mus integer neque.
+            </p>
+            <p>
+                Purus justo cras integer augue sagittis nisi eleifend, platea vehicula magnis fames laoreet ad ante, volutpat taciti in sollicitudin sociosqu diam. Lectus varius faucibus curabitur felis platea luctus litora diam, viverra ultricies eget massa mi fringilla sem, porta dapibus tellus nullam maecenas volutpat blandit. Dignissim facilisi felis leo sagittis eu urna ultrices cum, rhoncus sodales nulla nisi interdum suscipit scelerisque.
+            </p>
+        </section>
+->
+        <section id="endpoints" class="fade-element">
+            <h2>Documentacion de endpoints</h2>
+            <p>
+                A continuación, se describen los endpoints disponibles para la 
+                interacción con el sistema. Cada endpoint se encuentra versionado 
+                y protegido según los lineamientos de seguridad establecidos. 
+                <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing 
+                elit. 
+            </p>
+
+            <div class="endpoints-table-container">
+                <table class="endpoints-table">
+                    <thead>
+                        <tr>
+                            <th>Ruta</th>
+                            <th>Metodo</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="endpoint : ${endpoints}">
+                            <td th:text="${endpoint.route}"></td>
+                            <td th:text="${endpoint.method}"></td>
+                            <td th:text="${endpoint.description}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

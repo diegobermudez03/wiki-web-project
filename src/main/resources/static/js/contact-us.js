@@ -10,18 +10,20 @@ document.addEventListener("DOMContentLoaded", function() {
         { id: "semester" }
     ];
 
-    // Lógica para contar caracteres y limitar
+    //for all fields we'll  add some handlers
     fields.forEach(field => {
         const input = document.getElementById(field.id);
 
-        // Si el campo tiene 'max', configuramos el contador
+        //if the field has the max field, means that it has a limitation of number
+        //so we'll add a handler to show the current characters, 
         if (field.max) {
             const counter = document.getElementById(field.id + "Count");
 
             input.addEventListener("input", function() {
                 const value = input.value;
                 counter.textContent = `${value.length}/${field.max}`;
-
+                
+                //wont allow to write more than the max
                 if (value.length > field.max) {
                     input.classList.add("error");
                     input.value = value.substring(0, field.max);
@@ -30,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // Quita la clase "error" si el usuario vuelve a escribir algo
+        //this is for all fields, if the field had an error, once the user changes the text
+        //like to correct, or to fill the field, then we remove the error class
         input.addEventListener("input", function() {
             if (input.value !== "" && input.classList.contains("error")) {
                 input.classList.remove("error");
@@ -38,22 +41,27 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Validación al enviar
+    
     form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        
-        // Resetea el contenedor de mensajes
-        messageContainer.innerHTML = "";
 
-        // Revisa campos vacíos y marca con clase "error"
+        event.preventDefault();
+
+        //before checking, we remove all errors just in case
+        document.querySelectorAll("input, textarea").forEach(input => {
+            input.classList.remove("error");
+        });
+
+
+        let isValid = true;
+        //the empty fields will show error
         fields.forEach(field => {
             const input = document.getElementById(field.id);
             if (input.value.trim() === "") {
+                isValid = false;
                 input.classList.add("error");
             }
         });
 
-        let isValid = true;
 
         const firstName = document.getElementById("firstName");
         const lastName = document.getElementById("lastName");
@@ -61,12 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const semester = document.getElementById("semester");
         const description = document.getElementById("description");
 
-        // Limpia clase error antes de volver a asignarla si hay problemas
-        document.querySelectorAll("input, textarea").forEach(input => {
-            input.classList.remove("error");
-        });
-
-        // Validaciones de nombres
+        //validate the first and last name
         if (firstName.value.length > 100 || firstName.value.trim() === "") {
             firstName.classList.add("error");
             isValid = false;
@@ -76,12 +79,15 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        // Validación de email
+        //validate the email
         const emailValue = email.value;
+        //if there are invalid spaces
         if (emailValue.trim().replaceAll(" ", "") !== emailValue) {
             email.classList.add("error");
             isValid = false;
         }
+
+        //these are to check if it has @ and a . after that
         const parts = emailValue.split("@");
         if (parts.length !== 2) {
             email.classList.add("error");
@@ -94,25 +100,26 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        // Validación de semestre
+        //checking the semester
         const semesterValue = parseInt(semester.value, 10);
         if (isNaN(semesterValue) || semesterValue < 0 || semesterValue > 16) {
             semester.classList.add("error");
             isValid = false;
         }
 
-        // Validación de descripción
+        //the description cant be empty
         if (description.value.trim() === "") {
             description.classList.add("error");
             isValid = false;
         }
 
+        //if there were errors found, we show the message
         if (!isValid) {
-            showErrorMessage("Por favor revisa los campos en rojo. Hay errores en el formulario.");
+            showErrorMessage("PHay errores, corrige los campos en rojo para continuar.");
             return;
         }
 
-        // Si todo está bien, envía el formulario
+        //if no errors were found, send the form
         sendForm(
             firstName.value,
             lastName.value,
@@ -123,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
         );
     });
 
-    // Funciones para mostrar mensajes agradables en lugar de 'alert'
+    //these are the functions that add the error or success elements
     function showSuccessMessage(msg) {
         const div = document.createElement("div");
         div.classList.add("message-box", "success");
@@ -138,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         messageContainer.appendChild(div);
     }
 
-    // Envío de formulario (fetch POST)
+    //function to send the form
     async function sendForm(firstN, lastN, mail, sem, desc, form) {
         const formData = {
             firstName: firstN,
@@ -158,19 +165,19 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             if (!response.ok) {
-                // Asumimos que la respuesta de error tiene un JSON con { error: "mensaje" }
+                //if the backend answerwith an error, we show the exact message recevied
                 const errorResponse = await response.json();
-                showErrorMessage(`❌ Error: ${errorResponse.error || "desconocido"}`);
+                showErrorMessage(`❌ Error: ${errorResponse.error}`);
                 return;
             }
 
-            // Éxito
-            showSuccessMessage("Formulario enviado correctamente. ¡Gracias por contactarnos!");
+            //if everything wqs fine, then show the success message
+            showSuccessMessage("El formulario fue enviado, gracias.");
             form.reset();
             document.querySelectorAll(".char-count").forEach(counter => counter.textContent = "0/100");
 
         } catch (error) {
-            showErrorMessage(`❌ Error al enviar. Detalles: ${error.message}`);
+            showErrorMessage(`❌ Error enviando: ${error.message}`);
         }
     }
 });

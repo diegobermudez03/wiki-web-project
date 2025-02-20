@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Despliegue</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" th:href="@{/css/deployment-style.css}" />
-    <script th:src="@{/js/deployment.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script th:src="@{/js/fade.js}" defer></script>
 </head>
 <body>
     <div th:replace="~{fragments/menu.html}"></div>
-    <div class="deployment-container">
+    <div class="deployment-container" >
         <h1>Despliegue del Proyecto</h1>
         <p class="subtitle">
-            En esta sección se documenta el método de despliegue usado para el proyecto 
-            el cual se basa en Docker.
+            En esta sección se documenta el método de despliegue usado para el proyecto el cual se basa en Docker.
         </p>
 
-        <section class="deployment-section fade-comp">
-            <h2>Visión general</h2>
+        <section class="fade-element deployment-section">
+            <h2>Introduccion</h2>
             <p>
-                El despliegue del proyecto se realiza utilizando contenedores de Docker. 
-                Se construye una imagen de la aplicación web y esta imagen luego se usa 
-                en un <strong>docker-compose.yml</strong> junto con otros servicios.
+                El despliegue del proyecto se realiza utilizando contenedores de Docker.  Se construye una imagen de la aplicación web y esta imagen luego se usa en un <strong>docker-compose.yml</strong> junto con otros servicios.
             </p>
             <p>
                 A continuación se muestra un diagrama que representa el flujo de despliegue:
@@ -32,12 +29,10 @@
                  class="deployment-image">
         </section>
 
-        <section class="deployment-section fade-comp">
-            <h2>Creación de Imagen Docker</h2>
+        <section class="fade-element deployment-section">
+            <h2>Creacion de Imagen Docker</h2>
             <p>
-                Para crear la imagen del proyecto web, se usa un archivo 
-                <strong>Dockerfile</strong>. Este archivo define los pasos necesarios 
-                para compilar y ejecutar la aplicación en el entorno de Docker.
+                Para crear la imagen del proyecto web, se usa un archivo  <strong>Dockerfile</strong>. Este archivo define los pasos necesarios  para compilar y ejecutar la aplicación en el entorno de Docker.
             </p>
             <p>A continuación se muestra el código utilizado:</p>
             <img th:src="@{/images/dockerfile.jpg}"
@@ -45,34 +40,27 @@
                  class="deployment-image">
         </section>
 
-        <section class="deployment-section fade-comp">
+        <section class="fade-element deployment-section">
             <h2>Docker Compose</h2>
             <p>
-                El proyecto se despliega junto con una instancia de Postgres, 
-                y una de Adminer (para visualizar la base de datos), en un 
-                <strong>Docker Compose</strong>. Este archivo permite crear y correr 
-                los distintos contenedores de forma coordinada.
+                El proyecto se despliega junto con una instancia de Postgres,  y una de Adminer (para visualizar la base de datos), en un  <strong>Docker Compose</strong>. Este archivo permite crear y correr  los distintos contenedores de forma coordinada.
             </p>
             <p>
-                A continuación se muestra el archivo con la configuración usada 
-                <code>docker-compose.yml</code>:
+                A continuación se muestra el archivo con la configuración usada  <code>docker-compose.yml</code>:
             </p>
             <img th:src="@{/images/dockercompose.jpg}" 
                  alt="Contenido de docker-compose.yml"
                  class="deployment-image">
         </section>
 
-        <section class="deployment-section fade-comp">
-            <h2>Ejecución</h2>
+        <section class="fade-element deployment-section">
+            <h2>Ejecucion</h2>
             <p>
-                Una vez configurado el <code>docker-compose.yml</code>, el despliegue 
-                se ejecuta con el siguiente comando:
+                Una vez configurado el <code>docker-compose.yml</code>, el despliegue  se ejecuta con el siguiente comando:
             </p>
             <pre><code>docker-compose up -d</code></pre>
             <p>
-                Dicho comando crea (de ser necesario) e inicia los contenedores 
-                especificados; con esto se logra ejecutar la aplicación junto con 
-                la base de datos correctamente.
+                Dicho comando crea (de ser necesario) e inicia los contenedores  especificados; con esto se logra ejecutar la aplicación junto con  la base de datos correctamente.
             </p>
             <img th:src="@{/images/execution.jpg}" 
                  alt="Aplicación corriendo" 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/arquitechstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script th:src="@{/js/arquitech.js}" defer></script>
+
+    <title>Arquitectura del Proyecto</title>
+    
+
+</head>
+<body>
+
+    <div th:replace="~{fragments/menu.html}"></div>
+
+
+    <div class="arquitech-container">
+
+ 
+        <h1>Arquitectura del Proyecto</h1>
+        <p class="subtitle">A continuación, se presentan los diagramas de referencia del proyecto, como el diagrama de contexto, diagrama del contenedor, diagrama de componentes, diagrama de entidad- relación y así mismo el diagrama de despliegue.</p>
+
+
+        <div class="arquitech-index">
+            <h2>Índice</h2>
+            <ol>
+                <li><a href="#Diagramas-de-referencia">Diagramas de referencia</a></li>
+                <li><a href="#Modelos">Modelos</a></li>
+                <li><a href="#Diagrama-despliegue">Diagrama de despliegue</a></li>
+            </ol>
+        </div>
+
+        <section class="fade-element" id="Diagramas-de-referencia">
+            <h2>Diagramas de referencia C4</h2>
+            <ul>
+                <li>Diagrama de contexto</li>
+                <div class="placeholder">[Placeholder para el Diagrama de Contexto]</div>
+            
+                <li>Diagrama del contenedor</li>
+                <div class="placeholder">[Placeholder para el Diagrama del Contenedor]</div>
+            
+                <li>Diagrama de componentes</li>
+                <div class="placeholder">[Placeholder para el Diagrama de Componentes]</div>
+            </ul>
+        </section>
+
+        <section class="fade-element" id="Modelos">
+            <h2>Modelos</h2>
+            <ul>
+                <li>Entidad/Relación: Diccionario</li>
+                <div class="placeholder">[Placeholder para el Modelo Entidad-Relación]</div>
+            </ul>
+        </section>
+    
+        <section class="fade-element" id="Diagrama-despliegue">
+            <h2>Diagrama de despliegue</h2>
+            <div class="placeholder">[Placeholder para el Diagrama de Despliegue]</div>
+        </section>
+    </div>
+</body>
+</html>

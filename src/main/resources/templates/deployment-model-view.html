@@ -13,13 +13,13 @@
     <div class="deployment-container" >
         <h1>Despliegue del Proyecto</h1>
         <p class="subtitle">
-            En esta sección se documenta el método de despliegue usado para el proyecto el cual se basa en Docker.
+            En esta sección se documenta el método de despliegue usado para el proyecto el cual se basa en Kubernetes.
         </p>
 
         <section class="fade-element deployment-section">
             <h2>Introduccion</h2>
             <p>
-                El despliegue del proyecto se realiza utilizando contenedores de Docker.  Se construye una imagen de la aplicación web y esta imagen luego se usa en un <strong>docker-compose.yml</strong> junto con otros servicios.
+              El despliegue del proyecto se realiza usando Kubernetes, en especifico microk8s, 
             </p>
             <p>
                 A continuación se muestra un diagrama que representa el flujo de despliegue:
@@ -32,7 +32,7 @@
         <section class="fade-element deployment-section">
             <h2>Creacion de Imagen Docker</h2>
             <p>
-                Para crear la imagen del proyecto web, se usa un archivo  <strong>Dockerfile</strong>. Este archivo define los pasos necesarios  para compilar y ejecutar la aplicación en el entorno de Docker.
+                Para crear la imagen del proyecto, se usa un archivo  <strong>Dockerfile</strong>. Este archivo define los pasos necesarios  para compilar y ejecutar la aplicación en el entorno de Docker.
             </p>
             <p>A continuación se muestra el código utilizado:</p>
             <img th:src="@{/images/dockerfile.jpg}"
@@ -41,29 +41,49 @@
         </section>
 
         <section class="fade-element deployment-section">
-            <h2>Docker Compose</h2>
+            <h2>Kubernetes</h2>
             <p>
-                El proyecto se despliega junto con una instancia de Postgres,  y una de Adminer (para visualizar la base de datos), en un  <strong>Docker Compose</strong>. Este archivo permite crear y correr  los distintos contenedores de forma coordinada.
+                Para el despliegue en kubernetes se debe contar con archivos de configuracion para el namespace, el despliegue, el servicio y la regla de ingreso.
             </p>
             <p>
-                A continuación se muestra el archivo con la configuración usada  <code>docker-compose.yml</code>:
+                El primer paso es crear el namespace en el que se creara el deployment, el servicio y el ingress.
             </p>
-            <img th:src="@{/images/dockercompose.jpg}" 
-                 alt="Contenido de docker-compose.yml"
+            <img th:src="@{/images/namespacekub.jpg}" 
+                 alt="Contenido de namespace.yaml"
                  class="deployment-image">
+            <p>
+                Luego se debe crear el despliegue, el cual establece el replicaset a usar, y el contenedor que se correra, en este caso el mifinca-app
+            </p>
+            <img th:src="@{/images/deploymentkub.jpg}" 
+                 alt="Contenido de deployment.yaml"
+                 class="deployment-image">
+            <p>
+                Cuando ya se tiene el deployment, se debe crear el servicio que permite acceso al despliegue.
+            </p>
+            <img th:src="@{/images/servicekub.jpg}" 
+                     alt="Contenido de service.yaml"
+                     class="deployment-image">
+             <p>
+                Finalmente se debe crear la regla de ingreso, esto permite mapear distintos servicios a patrones de url.
+            </p>
+            <img th:src="@{/images/ingresskub.jpg}" 
+                             alt="Contenido de ingress.yaml"
+                             class="deployment-image">
         </section>
 
         <section class="fade-element deployment-section">
-            <h2>Ejecucion</h2>
+            <h2>Pipeline de Jenkins</h2>
             <p>
-                Una vez configurado el <code>docker-compose.yml</code>, el despliegue  se ejecuta con el siguiente comando:
+                Para seguir una arquitectura de CI/CD, se usa un pipeline de jenkins para el despliegue de la aplicacion
             </p>
-            <pre><code>docker-compose up -d</code></pre>
             <p>
-                Dicho comando crea (de ser necesario) e inicia los contenedores  especificados; con esto se logra ejecutar la aplicación junto con  la base de datos correctamente.
+                Se tiene diseñada un pipeline que extrae el codigo de github, lo compila y construye la imagen de docker, lo registra, y luego construye el despliegue de kubernetes
             </p>
-            <img th:src="@{/images/execution.jpg}" 
-                 alt="Aplicación corriendo" 
+            <img th:src="@{/images/jenkinspipeline.jpg}" 
+                 alt="Jenkins pipeline" 
+                 class="deployment-image">
+            <img th:src="@{/images/pipeline.jpg}" 
+                 alt="Jenkins pipeline" 
                  class="deployment-image">
         </section>
     </div>

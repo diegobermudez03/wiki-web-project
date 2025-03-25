@@ -27,21 +27,19 @@
         <section id="overview" class="fade-element">
             <h2>Resumen General</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit himenaeos class, laoreet dui varius lacus quam iaculis litora ligula senectus, justo habitasse at pulvinar augue parturient magnis nullam. Lobortis donec commodo magnis at porta sem massa ullamcorper, lacinia vulputate tempus habitasse aenean risus quam, litora faucibus primis phasellus magna venenatis interdum. Luctus risus auctor quis dapibus tempor tellus commodo orci leo, erat ultrices pellentesque convallis praesent mattis elementum quisque imperdiet vivamus, interdum posuere non pretium ut mus integer neque.
+                La API debe proveer endpoints tanto para dueños de fincas como para los usuarios que desean arrendar, es asi que se necesitan endpoints que en la mayoria de casos seran unicos para uno de los 2 roles, mientras que otros podran servir para ambos roles, en estos endpoints es fundamental el uso de la autorizacion para identificar correctamente la logica que se debe emplear dependiendo del tipo de usuario
             </p>
             <p>
-                Purus justo cras integer augue sagittis nisi eleifend, platea vehicula magnis fames laoreet ad ante, volutpat taciti in sollicitudin sociosqu diam. Lectus varius faucibus curabitur felis platea luctus litora diam, viverra ultricies eget massa mi fringilla sem, porta dapibus tellus nullam maecenas volutpat blandit. Dignissim facilisi felis leo sagittis eu urna ultrices cum, rhoncus sodales nulla nisi interdum suscipit scelerisque.
+                En total se tienen 22 endpoints, de los cuales 9 endpoints cumplen historias de usuario de LANDLORD y USER al mismo tiempo, es decir, endpoints como crear cuenta, o agregar ratings, son 1 para ambos roles. Por otro lado se tienen 7 endpoints solo para LANDLORDS, y finalmente 6 para USER.
             </p>
         </section>
-->
+
         <section id="endpoints" class="fade-element">
             <h2>Documentacion de endpoints</h2>
             <p>
                 A continuación, se describen los endpoints disponibles para la 
                 interacción con el sistema. Cada endpoint se encuentra versionado 
                 y protegido según los lineamientos de seguridad establecidos. 
-                <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing 
-                elit. 
             </p>
 
             <div class="endpoints-table-container">
@@ -49,8 +47,9 @@
                     <thead>
                         <tr>
                             <th>Ruta</th>
-                            <th>Metodo</th>
-                            <th>Descripcion</th>
+                            <th>Método</th>
+                            <th>Descripción</th>
+                          
                         </tr>
                     </thead>
                     <tbody>

@@ -2,7 +2,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 1.', 
     'Creacion de cuenta', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero poder crear una cuenta de un usuario en el sistema que pueda manejar propiedades Para que pueda acceder a las herramientas y recursos necesarios para realizar las actividades del sistema.',
     '– Cuando accedo al sistema por primera vez, veo una opción clara para crear una cuenta de usuario.
 – Al hacer clic en “Crear cuenta”, se me redirige a un formulario de registro.
@@ -25,7 +25,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 2.', 
     'Activación de cuenta', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero activar mi cuenta Para que pueda acceder a las herramientas y recursos necesarios para realizar las actividades del sistema.',
     '– Cuando me llegue el correo de activación, el usuario podrá hacer click en un enlace y esto activará la cuenta y entrará al inicio de la cuenta para poder realizar sus actividades'
 );
@@ -34,7 +34,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 3.', 
     'Autenticación de usuario', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero autenticarme en el sistema Para poder acceder de forma segura a mi cuenta',
     '– Al ingresar a cualquier página si no está autenticado, el sistema lo llevará a la página de autenticación.
 – Aquí encontrará un formulario con los siguientes campos:
@@ -47,7 +47,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 4.', 
     'Ver mis propiedades', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero ver las propiedades que tengo a mi cargo Para poder realizar las acciones que el sistema me va permitir',
     '– Ingreso a la página y me va mostrar una lista/tabla mínimo con los siguiente datos:
 Imagen chiquita descriptiva de la imagen
@@ -63,7 +63,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 5.', 
     'Crear propiedad', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero crear propiedades Para poder arrendar las propiedaes',
     '– Ingreso a la página donde puedo ver todas las propiedades
 – Ahí encontramos un botón que va llevar al formulario de crear una propiedad, donde se econtrarán los siguientes datos:
@@ -85,7 +85,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 6.', 
     'Editar propiedad', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero editar mis propiedades Para poder arrendar las propiedades y actualizar',
     '– Ingreso a la página donde puedo ver todas las propiedades
 – Ahí encontramos un botón por cada propiedad que me va permitir ir al formulario donde se pueden actualizar los datos básicos
@@ -109,7 +109,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 7.', 
     'Subir foto de la propiedad', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero subir fotos de las propiedades Para poder arrendar mostrar las propiedades de mejor forma',
     '– Ingreso a la página donde puedo ver todas las propiedades
 – Ahí encontramos un botón que va llevar al formulario de crear una propiedad, donde se econtrarán los siguientes datos:
@@ -123,7 +123,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 8.', 
     'Desactivar propiedad', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero desactivar propiedades Para que no me arrienden propiedades que ya no tengo en mi disposición',
     '– Ingreso a la página donde puedo ver todas las propiedades
 – Ahí encontramos un botón que va llevar mostrar un diálogo de confirmación para desactivar.
@@ -136,7 +136,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 9.', 
     'Ver solicitudes de arriendo', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero ver las solicitudes de arriendo Para poder aceptar o rechazar las solicitudes de arriendo',
     '– Ingreso a la página donde puedo ver un listado de solicitudes de arriendo que están activas con los siguientes estados: (1) por aceptar, (2) aceptada, (3) pagada, (4) por calificar.
 – También ingresando a la página de la propiedad puedo ver todas las solicitudes de la propiedad con los siguiente estados: (1) por aceptar, (2) aceptada, (3) pagada, (4) por calificar, (5) rechazada, (6) finalizada.
@@ -156,7 +156,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 10.', 
     'Aceptar solicitud de arriendo', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero aceptar la solicitud de arriendo Para poder aceptar las solicitudes de arriendo',
     '– Ingreso a la página donde puedo ver un listado de solicitudes de arriendo que están activas con los siguientes estados: (1) por aceptar, (2) aceptada, (3) pagada, (4) por calificar.
 – – En los listados de solicitudes el usuario podrá ver el botón de aceptar, este botón solo se habilitará para las solicitudes que están por aceptar.
@@ -167,7 +167,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 11.', 
     'Cancelar solicitud de arriendo', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero cancelar la solicitud de arriendo Para poder cancelar solicitudes de arriendo',
     '– En los listados de solicitudes el usuario podrá ver el botón de cancelar, este botón solo se habilitará para las solicitudes que están por aceptar.
 – Una vez se acepte pasa a estado cancelada'
@@ -177,7 +177,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 12.', 
     'Calificar arrendatario', 
-    'ARRENDADOR',
+    'ADMINISTRADOR',
     'Como un usuario arrendador Quiero calificar el arrendatario Para poder mostrar cerrar y verificar que tan buenos son los arrendatarios',
     '– El usuario verá la lista del solicitudes solo en caso de estar por calificar y ya se haya pasado la fecha de entrega, le aparecerá el botón de calificar.
 – Al hacer click ahí lo lleva al formulario de calificar donde también se pedirá un'
@@ -188,7 +188,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 13.', 
     'Creación de cuenta', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero poder crear una cuenta de un usuario en el sistema que pueda manejar propiedades Para que pueda acceder a las herramientas y recursos necesarios para realizar las actividades del sistema.',
     '– Cuando accedo al sistema por primera vez, veo una opción clara para crear una cuenta de usuario.
 – Al hacer clic en “Crear cuenta”, se me redirige a un formulario de registro.
@@ -211,7 +211,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 14.', 
     'Activación de cuenta', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero activar mi cuenta Para que pueda acceder a las herramientas y recursos necesarios para realizar las actividades del sistema.',
     '– Cuando me llegue el correo de activación, el usuario podrá hacer click en un enlace y esto activará la cuenta y entrará al inicio de la cuenta para poder realizar sus actividades'
 );
@@ -221,7 +221,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 15.', 
     'Autenticación', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero autenticarme en el sistema Para poder acceder de forma segura a mi cuenta',
     '– Al ingresar a cualquier página si no está autenticado, el sistema lo llevará a la página de autenticación.
 – Aquí encontrará un formulario con los siguientes campos:
@@ -235,7 +235,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 16.', 
     'Creación de cuenta', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero buscar propiedades Para poder solicitar el arriendo en fechas específicas',
     '– El usuario ingresará a un sitio donde se mostrará un listado de propiedades. La lista inicial será de un municipio seleccionado por la herramienta al azar.
 – El usuario podrá realizar la búsqueda de propiedades por las siguientes características:
@@ -256,7 +256,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 17.', 
     'Solicitar arriendo', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero autenticarme en el sistema Para realizar el paso de previo para pagar el posible arriendo',
     '– Al ingresar al detalle de la propiedad el arrendatario encontrará un botón donde podra solicitar el arriendo:
 – Al hacer click en ese botón, le aparecerá un formulario en el que se deberán llenar los siguientes campos:
@@ -272,7 +272,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 18.', 
     'Ver solicitudes de arriendo', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero autenticarme en el sistema Para verificar mis solicitudes de arriendo',
     '– En el menú principal los usuario podrán hacer clic y verificar todas las solicitudes de reserva hechas por el usuario.
 – Los datos que se podrán ver en la tabla son:
@@ -291,7 +291,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA. 19.', 
     'Pagar arriendo', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendatario Quiero autenticarme en el sistema Para pagar los arriendos',
     '– En el listado de solicitudes de arriendo cuando la solicitud esté en estado de pago y no esté vencida aparecerá un botón donde se podrá realizar el pago; al hacer clic se abrirá un formulario donde se aparecerá los datos de pago, particularmente:
 – Valor, que lo deberá actualizar automáticamente
@@ -304,7 +304,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA.20.', 
     'Calificar finca', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendador Quiero calificar el arrendatario Para poder mostrar cerrar y verificar que tan buenos son los arrendatarios',
     '– El usuario verá la lista del solicitudes solo en caso de estar por calificar y ya se haya pasado la fecha de entrega, le aparecerá el botón de calificar.
 – Al hacer click ahí lo lleva al formulario de calificar donde también se pedirá un comentario.
@@ -315,7 +315,7 @@ INSERT INTO user_stories(story_id, name, type, sentence, criteria)
 VALUES(
     'HUA.21.', 
     'Calificar arrendatario', 
-    'ADMINISTRADOR',
+    'ARRENDADOR',
     'Como un usuario arrendador Quiero calificar el arrendatario Para poder mostrar cerrar y verificar que tan buenos son los arrendatarios',
     '– El usuario verá la lista del solicitudes solo en caso de estar por calificar y ya se haya pasado la fecha de entrega, le aparecerá el botón de calificar.
 – Al hacer click ahí lo lleva al formulario de calificar donde también se pedirá un comentario.

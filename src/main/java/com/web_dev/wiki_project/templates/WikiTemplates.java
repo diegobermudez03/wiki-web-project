@@ -1,7 +1,6 @@
 package com.web_dev.wiki_project.templates;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.web_dev.wiki_project.entities.UserStoryEntity;
 import com.web_dev.wiki_project.services.EndpointsService;
 import com.web_dev.wiki_project.services.UserStoriesService;
 
@@ -58,6 +56,7 @@ public class WikiTemplates {
     public ModelAndView developmentModelView() {
         ModelAndView model =  new ModelAndView("development-model-view");
         final var endpoints = endpointsService.getEndpoints();
+        System.out.println(endpoints.size());
         model.addObject("endpoints", endpoints);
         return model;
     }

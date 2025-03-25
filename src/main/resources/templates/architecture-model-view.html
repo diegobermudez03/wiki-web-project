@@ -15,56 +15,172 @@
 
     <div class="arquitech-container">
         <h1>Arquitectura del Proyecto</h1>
-        <p class="subtitle">A continuación, se presentan los diagramas de referencia del proyecto, como el diagrama de contexto, diagrama del contenedor, diagrama de componentes, diagrama de entidad- relación y así mismo el diagrama de despliegue.</p>
+        <p class="subtitle">A continuacion se presentan los distintos diagramas que describen la arquitectura del software desarrollado</p>
 
 
         <div class="arquitech-index">
             <h2>Secciones</h2>
             <ol>
-                <li><a href="#Diagramas-de-referencia">Diagramas de referencia</a></li>
-                <li><a href="#Modelos">Modelos</a></li>
-                <li><a href="#Diagrama-despliegue">Diagrama de despliegue</a></li>
+                <li><a href="#Diagramas-entidad">Diagramas de entidad relacion</a></li>
+                <li><a href="#paquetes">Diagrama de paquetes</a></li>
+                <li><a href="#Diagrama-clases">Diagrama de clases</a></li>
+                <li><a href="#servicios">Interfaces servicios</a></li>
             </ol>
         </div>
 
-        <section class="fade-element" id="Diagramas-de-referencia">
-            <h2>Diagramas de referencia C4</h2>
+        <section class="fade-element" id="Diagramas-entidad">
+            <h2>Diagrama de entidad relacion</h2>
             <ul>
-                <li>Diagrama de contexto</li>
-                <img th:src="@{/images/contextdiagram.png}" 
-                 alt="Diaramde de contexto"
-                 class="architecture-image">
-            
-                <li>Diagrama del contenedor</li>
-                <img th:src="@{/images/containerdiagram.png}" 
-                 alt="diagrama de contenedor"
-                 class="architecture-image">
-            
-                <li>Diagrama de componentes</li>
-                <img th:src="@{/images/components.png}" 
-                 alt="diagrama de componentes"
+                <img th:src="@{/images/entitydiagram.jpg}" 
+                 alt="Diagrama entidad relacion"
                  class="architecture-image">
             
             </ul>
         </section>
 
-        <section class="fade-element" id="Modelos">
-            <h2>Modelos</h2>
+        <section class="fade-element" id="paquetes">
+            <h2>Diagrama de paquetes</h2>
             <ul>
-                <li>Entidad/Relación: Diccionario</li>
-                <img th:src="@{/images/entitydiagram.png}" 
-                 alt="entidad relacion"
+                <img th:src="@{/images/packagesdiagram.jpg}" 
+                 alt="Diagrama de paquetes"
                  class="architecture-image">
             </ul>
         </section>
     
-        <section class="fade-element" id="Diagrama-despliegue">
-            <h2>Diagrama de despliegue</h2>
-            <img th:src="@{/images/deploymentdiagram.png}" 
+        <section class="fade-element" id="Diagrama-clases">
+            <h2>Diagrama de clases</h2>
+            <img th:src="@{/images/classesdiagram.jpg}" 
                  alt="diagrama de despliegue"
                  class="architecture-image">
-            
         </section>
+
+        <section id="servicios">
+            <h2>Documentación de Servicios</h2>
+
+            <div class="service-doc">
+                <h3>AccountService</h3>
+                <p>Gestiona el registro, activación y autenticación de cuentas de usuario.</p>
+                <ul>
+                    <li><strong>void registerAccount(RegisterAccountDTO dto)</strong>: Registra una nueva cuenta validando los datos. No retorna valor.</li>
+                    <li><strong>AccessTokenDTO confirmAccount(ConfirmAccountDTO dto)</strong>: Activa una cuenta a partir de un token. Retorna un token de acceso.</li>
+                    <li><strong>AccessTokenDTO login(LoginDTO dto)</strong>: Autentica un usuario y retorna un token de acceso.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>AuthService</h3>
+                <p>Maneja la creación y validación de tokens JWT y sesiones activas.</p>
+                <ul>
+                    <li><strong>AccessTokenDTO createSession(AccountEntity account)</strong>: Crea sesión y retorna tokens de acceso y refresco.</li>
+                    <li><strong>AuthDTO extractJWTPayload(String token)</strong>: Extrae y valida el contenido del JWT. Retorna los datos del usuario.</li>
+                    <li><strong>AccessTokenDTO refreshAccessToken(String refreshToken)</strong>: Renueva el token de acceso usando el de refresco.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>ConfirmationService</h3>
+                <p>Gestiona tokens de confirmación y el envío de correos de activación.</p>
+                <ul>
+                    <li><strong>void notifyConfirmation(AccountEntity account)</strong>: Envía un correo con enlace de activación. Sin retorno.</li>
+                    <li><strong>ConfirmationEntity getConfirmationOfCode(UUID code)</strong>: Retorna la entidad de confirmación asociada o null.</li>
+                    <li><strong>void deleteConfirmation(UUID confirmationId)</strong>: Elimina la confirmación especificada. Sin retorno.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>CryptService</h3>
+                <p>Encripta y desencripta textos usando AES.</p>
+                <ul>
+                    <li><strong>String encryptAES(String text)</strong>: Retorna el texto encriptado en Base64.</li>
+                    <li><strong>String decrypt(String text)</strong>: Retorna el texto desencriptado o cadena vacía si falla.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>EmailService</h3>
+                <p>Envía correos mediante la API de SendGrid.</p>
+                <ul>
+                    <li><strong>void sendConfirmEmail(String email, String token)</strong>: Envía correo con enlace de confirmación. Sin retorno.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>PaymentService</h3>
+                <p>Gestiona pagos relacionados con solicitudes de arriendo.</p>
+                <ul>
+                    <li><strong>Set&lt;String&gt; getBanks()</strong>: Retorna la lista de bancos válidos.</li>
+                    <li><strong>void payRequest(UUID requestId, CreatePaymentDTO dto, AuthDTO authDTO)</strong>: Registra pago y actualiza el estado de la solicitud.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>PropertiesService</h3>
+                <p>Administra la creación, edición, búsqueda y eliminación de propiedades.</p>
+                <ul>
+                    <li><strong>List&lt;String&gt; retrieveDepartments()</strong>: Retorna lista de departamentos válidos.</li>
+                    <li><strong>void createProperty(CreatePropertyDTO dto, AuthDTO authDTO)</strong>: Registra una nueva propiedad. Sin retorno.</li>
+                    <li><strong>void uploadPicture(UUID propertyId, String picName, InputStream file, AuthDTO auth)</strong>: Carga imagen asociada a la propiedad.</li>
+                    <li><strong>List&lt;PropertyTileDTO&gt; getProperties(PropertySearchFilter filter)</strong>: Retorna lista paginada de propiedades.</li>
+                    <li><strong>void updateProperty(UUID propertyId, UpdatePropertyDTO dto, AuthDTO authDTO)</strong>: Actualiza una propiedad. Sin retorno.</li>
+                    <li><strong>FullPropertyDTO getProperty(UUID propertyId)</strong>: Retorna los detalles de una propiedad.</li>
+                    <li><strong>void deleteProperty(UUID propertyId, AuthDTO authDTO)</strong>: Elimina propiedad si es del usuario. Sin retorno.</li>
+                    <li><strong>void checkPropertyExists(UUID propertyId)</strong>: Valida existencia. Sin retorno.</li>
+                    <li><strong>boolean validatePropertyGuests(UUID propertyId, int nPeople)</strong>: Retorna si el número de huéspedes es válido.</li>
+                    <li><strong>double getPropertyPrice(UUID propertyId, Long nNights)</strong>: Calcula el valor total de la estadía.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>RatingService</h3>
+                <p>Gestiona las calificaciones entre usuarios y propietarios.</p>
+                <ul>
+                    <li><strong>Double getPropertyRating(UUID propertyId)</strong>: Retorna la calificación promedio de la propiedad.</li>
+                    <li><strong>RatingEntity addRating(ScheduleEntity sch, CreateRatingDTO dto, AuthDTO authDTO)</strong>: Registra una calificación si es válida.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>RentalService</h3>
+                <p>Gestiona las solicitudes de arriendo, pagos, calificaciones y estados.</p>
+                <ul>
+                    <!-- Gestión -->
+                    <li><strong>void createRentalRequest(UUID propertyId, CreateRentalRequestDTO dto, AuthDTO authDTO)</strong>: Crea una nueva solicitud de arriendo.</li>
+                    <li><strong>void acceptRequest(UUID requestId, AuthDTO authDTO)</strong>: Acepta una solicitud pendiente.</li>
+                    <li><strong>void cancelRequest(UUID requestId, AuthDTO authDTO)</strong>: Cancela una solicitud pendiente.</li>
+                    <li><strong>void updatePaidRentalRequest(UUID scheduleId)</strong>: Marca la solicitud como pagada.</li>
+
+                    <!-- Consulta -->
+                    <li><strong>List&lt;RentalRequestDTO&gt; getRentalRequests(Integer page, AuthDTO authDTO)</strong>: Retorna solicitudes paginadas según el rol.</li>
+                    <li><strong>List&lt;OwnerRentaRequestDTO&gt; getOwnerRentalRequests(Integer page, AuthDTO authDTO)</strong>: Solicitudes recibidas por propietarios.</li>
+                    <li><strong>List&lt;ScheduleDTO&gt; getPropertySchedules(UUID propertyId, SchedulesSearchFilter filter)</strong>: Devuelve fechas ocupadas de una propiedad.</li>
+
+                    <!-- Calificaciones -->
+                    <li><strong>void addRating(UUID requestId, CreateRatingDTO dto, AuthDTO authDTO)</strong>: Registra calificación si es válida.</li>
+                    <li><strong>ScheduleEntity getRentalRequestForRating(UUID scheduleId)</strong>: Recupera la solicitud calificable.</li>
+
+                    <!-- Pago -->
+                    <li><strong>ScheduleEntity getRentalRequestForPayment(UUID scheduleId)</strong>: Recupera la solicitud si puede ser pagada.</li>
+
+                    <!-- Utilitarios -->
+                    <li><strong>ScheduleEntity checkIfAbleToEditStatus(UUID requestId, AuthDTO authDTO)</strong>: Verifica si se puede editar la solicitud.</li>
+                    <li><strong>String checkScheduleStatus(ScheduleEntity entity)</strong>: Evalúa el estado actual de una solicitud.</li>
+                    <li><strong>String checkIfRatedState(ScheduleEntity ent, String role)</strong>: Verifica si fue calificada por ese rol.</li>
+                </ul>
+            </div>
+
+            <div class="service-doc">
+                <h3>StorageService</h3>
+                <p>Administra el almacenamiento y recuperación de archivos de propiedades.</p>
+                <ul>
+                    <li><strong>void saveFile(PropertyEntity prop, String path, InputStream file)</strong>: Guarda archivo y lo asocia a una propiedad.</li>
+                    <li><strong>Resource getFile(String relativePath)</strong>: Retorna el archivo como recurso.</li>
+                    <li><strong>List&lt;String&gt; getPicturesOfProperty(UUID propertyId)</strong>: Retorna URLs de imágenes de la propiedad.</li>
+                    <li><strong>String getUrl(FileEntity file)</strong>: Retorna la URL pública de un archivo.</li>
+                </ul>
+            </div>
+
+        </section>
+
     </div>
 </body>
 </html>

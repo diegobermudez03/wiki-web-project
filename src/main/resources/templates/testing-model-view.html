@@ -18,56 +18,335 @@
 
     
     <div class="testing-container">
-
- 
         <h1>Pruebas</h1>
-        <p class="subtitle">A continuación, se presentan los casos de prueba, tanto para el backend como para el frontend.</p>
-
-
-        <div class="testing-index">
-            <h2>Índice</h2>
-            <ol>
-                <li><a href="#Frontend">Frontend</a></li>
-                <li><a href="#Backend">Backend</a></li>
-            </ol>
-        </div>
-
-        <section class="fade-element" id="Frontend">
-            <h2>Frontend</h2>
-            <ul>
-                <li>Caso de prueba 1</li>
-                <img th:src="@{/images/testcase.png}" 
-                alt="test case"
-                class="testing-image">
-
-                <li>Caso de prueba 2</li>
-                <img th:src="@{/images/testcase.png}" 
-                alt="test case"
-                class="testing-image">
-            </ul>
+        <p class="subtitle">A continuacion se presentan las pruebas unitarias diseñadas para la API</p>
+        <section class="fade-element">
+            <h2>AuthControllerTest</h2>
+            <p>Pruebas unitarias relacionadas con autenticación, registro, activación de cuentas y refresco de sesión.</p>
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Endpoint / Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>createAccount_Success</td>
+                            <td>Registro exitoso con datos válidos</td>
+                            <td>POST /auth/register</td>
+                            <td>USER</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>createAccount_InvalidEmail</td>
+                            <td>Rechaza email inválido</td>
+                            <td>POST /auth/register</td>
+                            <td>USER</td>
+                            <td>Validación de formato</td>
+                        </tr>
+                        <tr>
+                            <td>createAccount_ShortPassword</td>
+                            <td>Rechaza contraseña muy corta</td>
+                            <td>POST /auth/register</td>
+                            <td>USER</td>
+                            <td>Validación de seguridad</td>
+                        </tr>
+                        <tr>
+                            <td>login_Success</td>
+                            <td>Inicio de sesión exitoso con credenciales válidas</td>
+                            <td>POST /auth/login</td>
+                            <td>USER</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>login_InvalidPassword</td>
+                            <td>Rechaza login con contraseña incorrecta</td>
+                            <td>POST /auth/login</td>
+                            <td>USER</td>
+                            <td>Contraseña incorrecta</td>
+                        </tr>
+                        <tr>
+                            <td>activateAccount_Success</td>
+                            <td>Activación exitosa mediante código válido</td>
+                            <td>POST /auth/confirm</td>
+                            <td>USER</td>
+                            <td>Activación por correo</td>
+                        </tr>
+                        <tr>
+                            <td>activateAccount_ConfirmationNotFound</td>
+                            <td>Rechaza código de activación inexistente</td>
+                            <td>POST /auth/confirm</td>
+                            <td>USER</td>
+                            <td>Código inválido</td>
+                        </tr>
+                        <tr>
+                            <td>refresh_Success</td>
+                            <td>Refresca token exitosamente con token válido</td>
+                            <td>POST /auth/refresh</td>
+                            <td>USER</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>refresh_InvalidToken_ThrowsInvalidToken</td>
+                            <td>Rechaza token de refresh inexistente</td>
+                            <td>POST /auth/refresh</td>
+                            <td>USER</td>
+                            <td>Token inválido</td>
+                        </tr>
+                        <tr>
+                            <td>refresh_ExpiredToken_ThrowsExpiredToken</td>
+                            <td>Rechaza token de refresh expirado y lo elimina</td>
+                            <td>POST /auth/refresh</td>
+                            <td>USER</td>
+                            <td>Manejo de expiración</td>
+                        </tr>
+                        <tr>
+                            <td>sendConfirmationEmail_Success</td>
+                            <td>Envío exitoso de email de confirmación</td>
+                            <td>Servicio interno EmailService</td>
+                            <td>-</td>
+                            <td>Infraestructura</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
-
-        <section class="fade-element" id="Backend">
-            <h2>Backend</h2>
-            <ul>
-                <li>Caso de prueba 1</li>
-                <img th:src="@{/images/testcase.png}" 
-                alt="test case"
-                class="testing-image">
-
-                <li>Caso de prueba 2</li>
-                <img th:src="@{/images/testcase.png}" 
-                alt="test case"
-                class="testing-image">
-
-                <li>Caso de prueba 3</li>
-                <img th:src="@{/images/testcase.png}" 
-                alt="test case"
-                class="testing-image">
-            </ul>
+        <section class="fade-element">
+            <h2>AuthMiddlewareTest</h2>
+            <p>Pruebas del middleware de autenticación que intercepta peticiones y valida el token JWT en el encabezado.</p>
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Endpoint / Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>preHandle_MissingAuthorizationHeader</td>
+                            <td>Bloquea peticiones sin encabezado Authorization</td>
+                            <td>Intercepción global</td>
+                            <td>-</td>
+                            <td>Sin autenticación</td>
+                        </tr>
+                        <tr>
+                            <td>preHandle_InvalidAuthorizationHeader</td>
+                            <td>Bloquea encabezado Authorization malformado</td>
+                            <td>Intercepción global</td>
+                            <td>-</td>
+                            <td>Formato inválido</td>
+                        </tr>
+                        <tr>
+                            <td>preHandle_ValidAuthorizationHeader</td>
+                            <td>Permite acceso con token válido y lo guarda en atributos</td>
+                            <td>Intercepción global</td>
+                            <td>USER</td>
+                            <td>Token válido</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
+        <section class="fade-element">
+            <h2>ErrorsMiddlewareTest</h2>
+            <p>Pruebas del middleware que maneja excepciones y retorna respuestas estructuradas con mensaje de error y timestamp.</p>
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Endpoint / Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>handleGeneralException_GenericException</td>
+                            <td>Responde con 500 y mensaje para excepción genérica</td>
+                            <td>Manejo de errores global</td>
+                            <td>-</td>
+                            <td>Error inesperado</td>
+                        </tr>
+                        <tr>
+                            <td>handleGeneralException_ApiException</td>
+                            <td>Responde con 400 para errores personalizados del sistema</td>
+                            <td>Manejo de errores global</td>
+                            <td>-</td>
+                            <td>Uso de ApiException</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="fade-element">
+            <h2>PaymentControllerTest</h2>
+            <p>Pruebas unitarias del controlador de pagos. Verifica la lógica de validación de parámetros y autorización para registrar pagos y obtener bancos disponibles.</p>
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Endpoint / Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>paySchedule_Success</td>
+                            <td>Permite registrar un pago válido</td>
+                            <td>POST /payments</td>
+                            <td>USER</td>
+                            <td>Programación aprobada</td>
+                        </tr>
+                        <tr>
+                            <td>paySchedule_Unauthorized_UserMismatch</td>
+                            <td>Previene pagos por usuarios no propietarios de la solicitud</td>
+                            <td>POST /payments</td>
+                            <td>USER</td>
+                            <td>Usuario no autorizado</td>
+                        </tr>
+                        <tr>
+                            <td>paySchedule_InvalidParameters_NullAccountOrInvalidBank</td>
+                            <td>Valida parámetros nulos o banco inválido</td>
+                            <td>POST /payments</td>
+                            <td>USER</td>
+                            <td>Parámetros inválidos</td>
+                        </tr>
+                        <tr>
+                            <td>getBanks_Success</td>
+                            <td>Devuelve correctamente la lista de bancos válidos</td>
+                            <td>GET /payments/banks</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="fade-element">
+            <h2>PropertiesControllerTest</h2>
+            <p>Pruebas unitarias del controlador de propiedades. Verifican la creación, modificación, eliminación, filtrado y recuperación de propiedades, así como subida de imágenes y obtención de departamentos.</p>
+        
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>postProperty_Success</td><td>Publicación exitosa de propiedad</td><td>POST /properties</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>postProperty_NotOwner</td><td>Previene publicación por usuario no propietario</td><td>POST /properties</td><td>USER</td><td>Rol inválido</td></tr>
+                        <tr><td>getProperties_FilterSuccess</td><td>Filtrado de propiedades por rango de precios</td><td>GET /properties</td><td>-</td><td>Con filtro</td></tr>
+                        <tr><td>getProperty_Success</td><td>Obtención de detalles de propiedad</td><td>GET /properties/{id}</td><td>-</td><td>Incluye imágenes y rating</td></tr>
+                        <tr><td>getProperty_NotFound</td><td>Propiedad no existente lanza error</td><td>GET /properties/{id}</td><td>-</td><td>NotFound</td></tr>
+                        <tr><td>getProperty_RatingIsNull</td><td>Propiedad sin rating ni imágenes</td><td>GET /properties/{id}</td><td>-</td><td>Rating null</td></tr>
+                        <tr><td>updateProperty_Success</td><td>Actualización correcta de propiedad</td><td>PUT /properties/{id}</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>updateProperty_InvalidDepartment</td><td>Error por departamento inválido</td><td>PUT /properties/{id}</td><td>LANDLORD</td><td>Departamento inválido</td></tr>
+                        <tr><td>deactivateProperty_Success</td><td>Eliminación exitosa de propiedad</td><td>DELETE /properties/{id}</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>deactivateProperty_UserNotOwner</td><td>Error si el usuario no es el dueño</td><td>DELETE /properties/{id}</td><td>USER</td><td>Acceso denegado</td></tr>
+                        <tr><td>getDepartments_Success</td><td>Obtiene departamentos de Colombia</td><td>GET /properties/departments</td><td>-</td><td>API externa</td></tr>
+                        <tr><td>uploadPicture_Success</td><td>Subida de imagen válida</td><td>POST /properties/{id}/pictures</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>uploadPicture_Unauthorized</td><td>Previene subida de imagen por no propietario</td><td>POST /properties/{id}/pictures</td><td>LANDLORD</td><td>No autorizado</td></tr>
+                        <tr><td>getMyProperties_Success</td><td>Obtiene propiedades del dueño</td><td>GET /properties/mine</td><td>LANDLORD</td><td>Incluye rating e imágenes</td></tr>
+                        <tr><td>getMyProperties_EmptyList</td><td>Lista vacía si no hay propiedades</td><td>GET /properties/mine</td><td>LANDLORD</td><td>Vacío</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="fade-element">
+            <h2>RentalControllerTest</h2>
+            <p>Pruebas unitarias para verificar el correcto funcionamiento del controlador de solicitudes de arriendo, incluyendo creación, aceptación, cancelación, calificación y consultas de solicitudes.</p>
+        
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Test</th>
+                            <th>Qué Verifica</th>
+                            <th>Funcionalidad</th>
+                            <th>Rol</th>
+                            <th>Caso Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>getPropertySchedules_Success</td><td>Obtención de fechas ocupadas</td><td>GET /rental/schedules</td><td>-</td><td>-</td></tr>
+                        <tr><td>getPropertySchedules_EmptyList</td><td>No hay fechas ocupadas</td><td>GET /rental/schedules</td><td>-</td><td>Sin reservas</td></tr>
+                        <tr><td>getPropertySchedules_PropertyNotFound</td><td>Error si propiedad no existe</td><td>GET /rental/schedules</td><td>-</td><td>NotFound</td></tr>
+                        <tr><td>getOwnerRentalRequests_UnauthorizedIfNotLandlord</td><td>Previene acceso a USER</td><td>GET /rental/owner</td><td>USER</td><td>Sin permiso</td></tr>
+                        <tr><td>getOwnerRentalRequests_SuccessWithSchedules</td><td>Lista de solicitudes recibidas</td><td>GET /rental/owner</td><td>LANDLORD</td><td>2 estados distintos</td></tr>
+                        <tr><td>getOwnerRentalRequests_EmptyList</td><td>Lista vacía si no hay solicitudes</td><td>GET /rental/owner</td><td>LANDLORD</td><td>Vacío</td></tr>
+                        <tr><td>getUserRentalRequests_Success_AsUser</td><td>Solicitudes hechas por el usuario</td><td>GET /rental/user</td><td>USER</td><td>2 estados</td></tr>
+                        <tr><td>getUserRentalRequests_Success_AsLandlord_Empty</td><td>LANDLORD no tiene solicitudes</td><td>GET /rental/user</td><td>LANDLORD</td><td>Vacío</td></tr>
+                        <tr><td>getUserRentalRequests_CompletedBecomesRated</td><td>Estado se vuelve RATED si ya fue calificado</td><td>GET /rental/user</td><td>USER</td><td>Estado dinámico</td></tr>
+                        <tr><td>acceptRentalRequest_Success</td><td>Aceptación exitosa de solicitud</td><td>PUT /rental/accept</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>acceptRentalRequest_RequestNotFound</td><td>Error si solicitud no existe</td><td>PUT /rental/accept</td><td>LANDLORD</td><td>NotFound</td></tr>
+                        <tr><td>acceptRentalRequest_UserNotOwner</td><td>Previene aprobación por no propietario</td><td>PUT /rental/accept</td><td>LANDLORD</td><td>Sin permiso</td></tr>
+                        <tr><td>cancelRentalRequest_Success</td><td>Cancelación de solicitud</td><td>PUT /rental/cancel</td><td>LANDLORD</td><td>-</td></tr>
+                        <tr><td>cancelRentalRequest_RequestNotFound</td><td>Error si solicitud no existe</td><td>PUT /rental/cancel</td><td>LANDLORD</td><td>NotFound</td></tr>
+                        <tr><td>cancelRentalRequest_UserNotOwner</td><td>Previene cancelación por no dueño</td><td>PUT /rental/cancel</td><td>LANDLORD</td><td>Sin permiso</td></tr>
+                        <tr><td>createRentalRequest_Success</td><td>Creación válida de solicitud</td><td>POST /rental/request</td><td>USER</td><td>-</td></tr>
+                        <tr><td>createRentalRequest_UserIsLandlord_ThrowsUnauthorized</td><td>LANDLORD no puede crear solicitud</td><td>POST /rental/request</td><td>LANDLORD</td><td>Sin permiso</td></tr>
+                        <tr><td>createRentalRequest_Collision_ThrowsInvalidScheduleDates</td><td>Fechas ocupadas generan error</td><td>POST /rental/request</td><td>USER</td><td>Fechas cruzadas</td></tr>
+                        <tr><td>rateTenant_Success_FirstRating</td><td>Primera calificación al inquilino</td><td>POST /rental/rate</td><td>USER</td><td>1 calificación</td></tr>
+                        <tr><td>rateTenant_Success_SecondRating</td><td>Segunda calificación completa ciclo</td><td>POST /rental/rate</td><td>LANDLORD</td><td>Estado se vuelve RATED</td></tr>
+                        <tr><td>rateTenant_NotCompleted_ThrowsCantRateYet</td><td>No permite calificar antes de terminar</td><td>POST /rental/rate</td><td>USER</td><td>Restricción temporal</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="fade-element">
+            <h2>StorageControllerTest</h2>
+            <p class="table-description">Pruebas relacionadas con la entrega de archivos desde el sistema de almacenamiento.</p>
+            <div class="test-table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del test</th>
+                            <th>Qué verifica</th>
+                            <th>Endpoint o funcionalidad</th>
+                            <th>Rol (si aplica)</th>
+                            <th>¿Caso especial?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>serveFile_Success</td>
+                            <td>Entrega exitosa de un archivo solicitado.</td>
+                            <td>GET /api/v1/files/{fileName}</td>
+                            <td>-</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>serveFile_FileNotFound_ThrowsException</td>
+                            <td>Excepción cuando el archivo no existe.</td>
+                            <td>GET /api/v1/files/{fileName}</td>
+                            <td>-</td>
+                            <td>Sí, manejo de error</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                        
+                        
     </div>
-
-    
 </body>
 </html>

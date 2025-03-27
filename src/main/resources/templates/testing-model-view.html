@@ -345,7 +345,13 @@
                 </table>
             </div>
         </section>
-                        
+        <section class="fade-element">
+            <h2>Calidad de codigo</h2>
+            <p>Las pruebas unitarias se usaron junto con SonarQube para verificar la calidad del codigo, el resultado fue mas que satisfactorio, con el 81.3% de codigo cubierto, la calidad del codigo fue A, el problema mas grave en seguridad es de hecho por el token de SonarQube que esta expuesto, dado que no se integró en un pipeline no se podia tomar de las variables de ambiente</p>
+            <img th:src="@{/images/sonarqube.jpg}"
+                 alt="resultado sonarqube"
+                 class="testing-image">
+        </section>
                         
     </div>
 </body>

@@ -100,6 +100,19 @@ section ul {
     vertical-align: top;
 }
 
+
+
+.testing-image {
+    max-height: 400px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.28);
+    object-fit: contain;
+}
+
 .test-table th {
     font-weight: bold;
 }

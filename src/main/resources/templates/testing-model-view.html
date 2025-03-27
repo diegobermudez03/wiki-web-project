@@ -345,6 +345,117 @@
                 </table>
             </div>
         </section>
+        <p class="subtitle">A continuacion se presentan las pruebas de carga diseñadas para las API más usadas</p>
+        <section class="fade-element">
+            <h2>Pruebas de carga</h2>
+            <p>Se analizaron los tiempos de respuesta promedio de los cuatro endpoints en función del número de requests:</p>
+                <ul>
+                    <li>Crear Cuenta</li>
+                    <li>Iniciar Sesión</li>
+                    <li>Crear Propiedad</li>
+                    <li>Listar Propiedades</li>
+                </ul>
+                <h3>Observaciones Generales</h3>
+                <ul>
+                    <li>La prueba se realizó en una máquina virtual Ubuntu con un procesador de 4 núcleos y 4 hilos, por lo que las características de la máquina virtual pudieron afectar también el rendimiento de la prueba a mayor número de requests</li>
+                    <li>A medida que el número de requests aumenta, el tiempo de respuesta promedio también aumenta significativamente.</li>
+                    <li>La diferencia de tiempos entre 10 y 100 requests es poco notable, pero a partir de 500 requests se observa un incremento exponencial en los tiempos.</li>
+                    <li>Algunos endpoints presentan una afectación en el rendimiento más pronunciado que otros.</li>
+                </ul>
+
+                <h3>Análisis por Endpoint</h3>
+    
+                    <h4> 1. Crear Cuenta</h4>
+                    <table>
+                        <tr><th>Requests</th><th>Tiempo (ms)</th></tr>
+                        <tr><td>10</td><td>519</td></tr>
+                        <tr><td>100</td><td>478</td></tr>
+                        <tr><td>500</td><td>7786</td></tr>
+                        <tr><td>1000</td><td>19469</td></tr>
+                        <tr><td>5000</td><td>100192</td></tr>
+                        <tr><td>10000</td><td>164585</td></tr>
+                    </table>
+                    <p><strong>Análisis:</strong></p>
+                    <ul>
+                        <li>El tiempo de respuesta se mantiene estable entre 10 y 100 requests, lo cual indica que el sistema maneja bien cargas pequeñas.</li>
+                        <li>A partir de 500 requests, el tiempo de respuesta se incrementa rápidamente.</li>
+                        <li>Con 10,000 requests, el tiempo de respuesta promedio es 164.5 segundos (casi 3 minutos).</li>
+                        <li>Mostró porcentaje de error del 25,26% al realizar la prueba con 10000 requests, con las demás pruebas no hubo error.</li>
+                    </ul>
+                    <h4>2. Iniciar Sesión</h4>
+                    <table>
+                        <tr><th>Requests</th><th>Tiempo (ms)</th></tr>
+                        <tr><td>10</td><td>21</td></tr>
+                        <tr><td>100</td><td>21</td></tr>
+                        <tr><td>500</td><td>7039</td></tr>
+                        <tr><td>1000</td><td>17861</td></tr>
+                        <tr><td>5000</td><td>97032</td></tr>
+                        <tr><td>10000</td><td>159582</td></tr>
+                    </table>
+                    <p><strong>Análisis:</strong></p>
+                    <ul>
+                        <li>Maneja muy bien cargas pequeñas.</li>
+                        <li>A partir de 500 requests, el tiempo de respuesta aumenta abruptamente.</li>
+                        <li>Con 10,000 requests, se eleva a 159 segundos (2.6 min).</li>
+                        <li>Mostró porcentaje de error del 68,49% al realizar la prueba con 10000 requests, con las demás pruebas no hubo error.</li>
+                    </ul>
+                    <h4>3. Crear Propiedad</h4>
+                    <table>
+                        <tr><th>Requests</th><th>Tiempo (ms)</th></tr>
+                        <tr><td>10</td><td>480</td></tr>
+                        <tr><td>100</td><td>562</td></tr>
+                        <tr><td>500</td><td>5401</td></tr>
+                        <tr><td>1000</td><td>8476</td></tr>
+                        <tr><td>5000</td><td>24980</td></tr>
+                        <tr><td>10000</td><td>168807</td></tr>
+                    </table>
+                    <p><strong>Análisis:</strong></p>
+                    <ul>
+                        <li>Maneja bien cargas pequeñas.</li>
+                        <li>A partir de 500 requests, se incrementa considerablemente.</li>
+                        <li>Con 10,000 requests, el tiempo llega a 168.8 segundos (~2.8 min).</li>
+                        <li>Mostró porcentaje de error del 64,96% al realizar la prueba con 10000 requests, con las demás pruebas no hubo error.</li>
+                    </ul>
+                    <h4>4. Listar Propiedades</h4>
+                    <table>
+                        <tr><th>Requests</th><th>Tiempo (ms)</th></tr>
+                        <tr><td>10</td><td>48</td></tr>
+                        <tr><td>100</td><td>49</td></tr>
+                        <tr><td>500</td><td>1899</td></tr>
+                        <tr><td>1000</td><td>3955</td></tr>
+                        <tr><td>5000</td><td>23286</td></tr>
+                        <tr><td>10000</td><td>101061</td></tr>
+                    </table>
+                    <p><strong>Análisis:</strong></p>
+                    <ul>
+                        <li>Aunque inicia más rápido a comparación de otros endpoints, el incremento del tiempo de respuesta es notable.</li>
+                        <li>Con 10,000 requests, supera los 101 segundos (1.7 min).</li>
+                        <li>Mostró porcentaje de error del 86.88% al realizar la prueba con 10000 requests, con las demás pruebas no hubo error.</li>
+                    </ul>
+                <h3>Conclusiones</h3>
+                    <ol>
+                        <li><strong>Escalabilidad limitada:</strong>
+                            <ul>
+                                <li>Todos los endpoints presentan degradación significativa con cargas altas.</li>
+                                <li>Se deben optimizar consultas y evitar bloqueos en la base de datos.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Endpoints más críticos:</strong>
+                            <ul>
+                                <li>Crear Cuenta y Crear Propiedad son los más afectados.</li>
+                                <li>Listar Propiedades e Iniciar Sesión también muestran problemas de escalabilidad pero mucho menores.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Especificaciones de la máquina virtual</strong>
+                            <ul>
+                                <li>Las especificaciones fueron influyentes negativamente en las pruebas de 5000 requests y 10000 requests, debido a que al realizar las pruebas la CPU llegaba al 100% de uso.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+
+
+        </section>
                         
                         
     </div>
